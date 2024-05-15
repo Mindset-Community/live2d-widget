@@ -170,7 +170,7 @@ function initWidget(config, apiPath) {
   document.body.insertAdjacentHTML(
     "beforeend",
     `<div id="waifu-toggle">
-            <span>Signboard Girl</span>
+            <span>Mascot</span>
         </div>`
   );
   const toggle = document.getElementById("waifu-toggle");
