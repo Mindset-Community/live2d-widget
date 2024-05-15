@@ -54,7 +54,9 @@ function loadWidget(config) {
         }
       }
     }
-    const text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
+    const text = `Welcome to read<span>「${
+      document.title.split(" - ")[0]
+    }」</span>`;
     let from;
     if (document.referrer !== "") {
       const referrer = new URL(document.referrer),
@@ -168,7 +170,7 @@ function initWidget(config, apiPath) {
   document.body.insertAdjacentHTML(
     "beforeend",
     `<div id="waifu-toggle">
-            <span>看板娘</span>
+            <span>Signboard Girl</span>
         </div>`
   );
   const toggle = document.getElementById("waifu-toggle");
