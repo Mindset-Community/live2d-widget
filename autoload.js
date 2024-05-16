@@ -1,7 +1,7 @@
-// live2d_path 参数建议使用绝对路径
+// 注意：live2d_path 参数应使用绝对路径
 const live2d_path =
-  "https://fastly.jsdelivr.net/gh/Mindset-Community/live2d-widget@master/";
-//const live2d_path = "/live2d-widget/";
+  "https://cdn.jsdelivr.net/gh/Mindset-Community/live2d-widget@latest/";
+//const live2d_path = "http://127.0.0.1:5500/";
 
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
@@ -28,6 +28,7 @@ function loadExternalResource(url, type) {
 if (screen.width >= 768) {
   Promise.all([
     loadExternalResource(live2d_path + "waifu.css", "css"),
+    loadExternalResource(live2d_path + "live2dcubismcore.min.js", "js"),
     loadExternalResource(live2d_path + "live2d.min.js", "js"),
     loadExternalResource(live2d_path + "waifu-tips.js", "js"),
   ]).then(() => {
@@ -36,27 +37,37 @@ if (screen.width >= 768) {
       waifuPath: live2d_path + "waifu-tips.json",
       //apiPath: "https://live2d.fghrsh.net/api/",
       cdnPath:
-        "https://fastly.jsdelivr.net/gh/Mindset-Community/live2d_api@0.4.3/",
-      tools: ["asteroids", "photo", "quit"],
-      //  "switch-model","switch-texture","info","hitokoto",
+        "https://cdn.jsdelivr.net/gh/Mindset-Community/live2d_api@0.4.4/",
+      //cdnPath: "http://localhost:56692/",
+      tools: [
+        "hitokoto",
+        "asteroids",
+        "switch-model",
+        "switch-texture",
+        "photo",
+        "info",
+        "quit",
+      ],
     });
   });
 }
 
 console.log(`
-      .-.
-     (o.o)
-      |=|
-     __|__
-   //.=|=.\\
-  // .=|=. \\
-  \\ .=|=. //
-   \\(_=_)//
-    (:| |:)
-     || ||
-     () ()
-     || ||
-     || ||
-    ==' '==
--Haha you found me-
+  く__,.ヘヽ.        /  ,ー､ 〉
+           ＼ ', !-─‐-i  /  /´
+           ／｀ｰ'       L/／｀ヽ､
+         /   ／,   /|   ,   ,       ',
+       ｲ   / /-‐/  ｉ  L_ ﾊ ヽ!   i
+        ﾚ ﾍ 7ｲ｀ﾄ   ﾚ'ｧ-ﾄ､!ハ|   |
+          !,/7 '0'     ´0iソ|    |
+          |.从"    _     ,,,, / |./    |
+          ﾚ'| i＞.､,,__  _,.イ /   .i   |
+            ﾚ'| | / k_７_/ﾚ'ヽ,  ﾊ.  |
+              | |/i 〈|/   i  ,.ﾍ |  i  |
+             .|/ /  ｉ：    ﾍ!    ＼  |
+              kヽ>､ﾊ    _,.ﾍ､    /､!
+              !'〈//｀Ｔ´', ＼ ｀'7'ｰr'
+              ﾚ'ヽL__|___i,___,ンﾚ|ノ
+                  ﾄ-,/  |___./
+                  'ｰ'    !_,.:
 `);

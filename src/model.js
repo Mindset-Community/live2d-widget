@@ -1,6 +1,13 @@
 import showMessage from "./message.js";
 import randomSelection from "./utils.js";
 
+import * as PIXI from "pixi.js";
+import { Live2DModel } from "pixi-live2d-display";
+
+// expose PIXI to window so that this plugin is able to
+// reference window.PIXI.Ticker to automatically update Live2D models
+window.PIXI = PIXI;
+
 class Model {
   constructor(config) {
     let { apiPath, cdnPath } = config;
@@ -23,6 +30,31 @@ class Model {
     this.modelList = await response.json();
   }
 
+  async loadModelPixi(id, jsonpath) {
+    const element = document.getElementById(id);
+    const app = new PIXI.Application({
+      view: element,
+      transparent: true,
+    });
+    const model = await Live2DModel.from(jsonpath);
+
+    app.stage.addChild(model);
+    
+    const parentWidth = element.width;
+    const parentHeight = element.height;
+    // Scale to fit the stage
+    const ratio = Math.min(
+      parentWidth / model.width,
+      parentHeight / model.height
+    );
+    model.scale.set(ratio, ratio);
+    // Align bottom and center horizontally
+    
+    model.x = (parentWidth - model.width) / 2;
+    model.y =  parentHeight - model.height;
+    
+}
+
   async loadModel(modelId, modelTexturesId, message) {
     localStorage.setItem("modelId", modelId);
     localStorage.setItem("modelTexturesId", modelTexturesId);
@@ -30,15 +62,15 @@ class Model {
     if (this.useCDN) {
       if (!this.modelList) await this.loadModelList();
       const target = randomSelection(this.modelList.models[modelId]);
-      loadlive2d("live2d", `${this.cdnPath}model/${target}/index.json`);
+      //loadlive2d("live2d", `${this.cdnPath}model/${target}/index.json`);
+      this.loadModelPixi("live2d", `${this.cdnPath}model/${target}/index.json`);
     } else {
-      loadlive2d(
+      //loadlive2d("live2d", `${this.apiPath}get/?id=${modelId}-${modelTexturesId}`);
+      this.loadModelPixi(
         "live2d",
         `${this.apiPath}get/?id=${modelId}-${modelTexturesId}`
       );
-      console.log(
-        `Live2D model ${modelId}-${modelTexturesId} loaded successfully.`
-      );
+      console.log(`Live2D 模型 ${modelId}-${modelTexturesId} 加载完成`);
     }
   }
 
@@ -48,8 +80,9 @@ class Model {
     if (this.useCDN) {
       if (!this.modelList) await this.loadModelList();
       const target = randomSelection(this.modelList.models[modelId]);
-      loadlive2d("live2d", `${this.cdnPath}model/${target}/index.json`);
-      showMessage("Are my new clothes nice?", 4000, 10);
+      //loadlive2d("live2d", `${this.cdnPath}model/${target}/index.json`);
+      this.loadModelPixi("live2d", `${this.cdnPath}model/${target}/index.json`);
+      showMessage("我的新衣服好看嘛？", 4000, 10);
     } else {
       // 可选 "rand"(随机), "switch"(顺序)
       fetch(`${this.apiPath}rand_textures/?id=${modelId}-${modelTexturesId}`)
@@ -59,13 +92,9 @@ class Model {
             result.textures.id === 1 &&
             (modelTexturesId === 1 || modelTexturesId === 0)
           )
-            showMessage("I don't have any other clothes yet!", 4000, 10);
+            showMessage("我还没有其他衣服呢！", 4000, 10);
           else
-            this.loadModel(
-              modelId,
-              result.textures.id,
-              "Are my new clothes nice?"
-            );
+            this.loadModel(modelId, result.textures.id, "我的新衣服好看嘛？");
         });
     }
   }
