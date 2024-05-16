@@ -20,7 +20,7 @@ function showHitokoto() {
   fetch(url, options)
     .then((response) => response.json())
     .then((result) => {
-      const text = `This quote comes from... <span>「${result.url}」</span>，By <span>${result.name}</span> `;
+      const text = `This quote comes from... <span>「${result.originator.url}」</span>，By <span>${result.originator.name}</span> `;
       showMessage(result.content, 6000, 9);
       setTimeout(() => {
         showMessage(text, 4000, 9);
@@ -66,7 +66,7 @@ const tools = {
   info: {
     icon: fa_info_circle,
     callback: () => {
-      open("https://github.com/stevenjoezhang/live2d-widget");
+      open("https://mindset.onthewifi.com/about");
     },
   },
   quit: {
