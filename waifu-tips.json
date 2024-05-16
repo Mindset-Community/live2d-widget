@@ -23,7 +23,20 @@
 	}, {
 		"selector": "#waifu-tool-quit",
 		"text": ["Is it time to say goodbye?", "Sob sob QAQ Until we meet again...", "Don't abandon me...", "Can we still meet again...", "Hmph, you'll regret this!"]
-	}, {
+	}, 
+
+	
+	{
+		"selector": "#nav > div > div.jsx-46a4f6ec6f7b253d.flex.flex-shrink-0.justify-center.items-center > div:nth-child(2)",
+		"text": ["Search here! ＼（＾▽＾）／"," Searching for something? (っ˘̩╭╮˘̩)っ"]
+	},
+	{
+		"selector": "#nav > div > div.jsx-46a4f6ec6f7b253d.flex.flex-shrink-0.justify-center.items-center > div:nth-child(1)",
+		"text": ["Click here, and you'll be taken to a random article.","Feeling lucky?","Random article!"]
+	},
+
+	
+	{
 		"selector": "#search-button .fa-solid fa-magnifying-glass .search",
 		"text": ["Can't find the content you're looking for? Try searching!", "What are you looking for? Do you need help?"]
 	},{
