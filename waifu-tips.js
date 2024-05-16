@@ -29567,14 +29567,14 @@
         this.modelList || (await this.loadModelList());
         const r = t(this.modelList.models[e]);
         this.loadModelPixi("live2d", `${this.cdnPath}model/${r}/index.json`),
-          i("我的新衣服好看嘛？", 4e3, 10);
+          i("Are my new clothes nice?", 4e3, 10);
       } else
         fetch(`${this.apiPath}rand_textures/?id=${e}-${r}`)
           .then((t) => t.json())
           .then((t) => {
             1 !== t.textures.id || (1 !== r && 0 !== r)
-              ? this.loadModel(e, t.textures.id, "我的新衣服好看嘛？")
-              : i("我还没有其他衣服呢！", 4e3, 10);
+              ? this.loadModel(e, t.textures.id, "Are my new clothes nice?")
+              : i("I don't have any other clothes yet!", 4e3, 10);
           });
     }
     async loadOtherModel() {
@@ -29594,12 +29594,22 @@
   const Od = {
     hitokoto: {
       icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">\x3c!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --\x3e<path d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4l0 0 0 0 0 0 0 0 .3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z"/></svg>',
+
       callback: function () {
-        fetch("https://v1.hitokoto.cn")
+        const url = "https://quotes15.p.rapidapi.com/quotes/random/";
+        const options = {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key":
+              "c2707e5c68mshfca8dab734d8e99p1ab4a1jsn6602b56167a7",
+            "X-RapidAPI-Host": "quotes15.p.rapidapi.com",
+          },
+        };
+        fetch(url, options)
           .then((t) => t.json())
           .then((t) => {
-            const e = `这句一言来自 <span>「${t.from}」</span>，是 <span>${t.creator}</span> 在 hitokoto.cn 投稿的。`;
-            i(t.hitokoto, 6e3, 9),
+            const e = `This quote comes from... <span>「${t.url}」</span>，by <span>${t.name}</span>`;
+            i(t.content, 6e3, 9),
               setTimeout(() => {
                 i(e, 4e3, 9);
               }, 6e3);
@@ -29631,7 +29641,7 @@
     photo: {
       icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">\x3c!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --\x3e<path d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"/></svg>',
       callback: () => {
-        i("照好了嘛，是不是很可爱呢？", 6e3, 9),
+        i("Did you take the photo? Isn't it very cute?", 6e3, 9),
           (Live2D.captureName = "photo.png"),
           (Live2D.captureFrame = !0);
       },
@@ -29646,7 +29656,7 @@
       icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">\x3c!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --\x3e<path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>',
       callback: () => {
         localStorage.setItem("waifu-display", Date.now()),
-          i("愿你有一天能与重要的人重逢。", 2e3, 11),
+          i("May you reunite with important people one day.", 2e3, 11),
           (document.getElementById("waifu").style.bottom = "-500px"),
           setTimeout(() => {
             (document.getElementById("waifu").style.display = "none"),
@@ -29683,18 +29693,22 @@
                   n = e.split("-")[1] || r;
                 if (r <= t.getHours() && t.getHours() <= n) return i;
               }
-            const e = `欢迎阅读<span>「${
+            const e = `Welcome to read<span>「${
               document.title.split(" - ")[0]
             }」</span>`;
             let i;
             if ("" !== document.referrer) {
               const t = new URL(document.referrer),
                 r = t.hostname.split(".")[1],
-                n = { baidu: "百度", so: "360搜索", google: "谷歌搜索" };
+                n = {
+                  baidu: "Baidu",
+                  so: "360 Search",
+                  google: "Google Search",
+                };
               return location.hostname === t.hostname
                 ? e
                 : ((i = r in n ? n[r] : t.hostname),
-                  `Hello！来自 <span>${i}</span> 的朋友<br>${e}`);
+                  `Hello! Friends from <span>${i}</span><br>${e}`);
             }
             return e;
           })(e.time),
@@ -29785,7 +29799,7 @@
     "string" == typeof t && (t = { waifuPath: t, apiPath: e }),
       document.body.insertAdjacentHTML(
         "beforeend",
-        '<div id="waifu-toggle">\n            <span>看板娘</span>\n        </div>'
+        '<div id="waifu-toggle">\n            <span>Mascot</span>\n        </div>'
       );
     const i = document.getElementById("waifu-toggle");
     i.addEventListener("click", () => {
