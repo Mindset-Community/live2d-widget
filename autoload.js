@@ -36,8 +36,7 @@ if (screen.width >= 768) {
     initWidget({
       waifuPath: live2d_path + "waifu-tips.json",
       //apiPath: "https://live2d.fghrsh.net/api/",
-      cdnPath:
-        "https://cdn.jsdelivr.net/gh/Mindset-Community/live2d_api@0.4.4/",
+      cdnPath: "https://cdn.jsdelivr.net/gh/Mindset-Community/live2d_api/",
       //cdnPath: "http://localhost:56692/",
       tools: [
         "hitokoto",

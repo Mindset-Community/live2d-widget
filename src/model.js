@@ -39,7 +39,7 @@ class Model {
     const model = await Live2DModel.from(jsonpath);
 
     app.stage.addChild(model);
-    
+
     const parentWidth = element.width;
     const parentHeight = element.height;
     // Scale to fit the stage
@@ -49,11 +49,10 @@ class Model {
     );
     model.scale.set(ratio, ratio);
     // Align bottom and center horizontally
-    
+
     model.x = (parentWidth - model.width) / 2;
-    model.y =  parentHeight - model.height;
-    
-}
+    model.y = parentHeight - model.height;
+  }
 
   async loadModel(modelId, modelTexturesId, message) {
     localStorage.setItem("modelId", modelId);
@@ -82,7 +81,7 @@ class Model {
       const target = randomSelection(this.modelList.models[modelId]);
       //loadlive2d("live2d", `${this.cdnPath}model/${target}/index.json`);
       this.loadModelPixi("live2d", `${this.cdnPath}model/${target}/index.json`);
-      showMessage("我的新衣服好看嘛？", 4000, 10);
+      showMessage("Is my new clothes nice-looking?", 4000, 10);
     } else {
       // 可选 "rand"(随机), "switch"(顺序)
       fetch(`${this.apiPath}rand_textures/?id=${modelId}-${modelTexturesId}`)
@@ -92,9 +91,13 @@ class Model {
             result.textures.id === 1 &&
             (modelTexturesId === 1 || modelTexturesId === 0)
           )
-            showMessage("我还没有其他衣服呢！", 4000, 10);
+            showMessage("I don't have any other clothes yet!", 4000, 10);
           else
-            this.loadModel(modelId, result.textures.id, "我的新衣服好看嘛？");
+            this.loadModel(
+              modelId,
+              result.textures.id,
+              "Are my new clothes nice?"
+            );
         });
     }
   }
