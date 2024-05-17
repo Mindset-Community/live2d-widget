@@ -34,6 +34,30 @@
 		"selector": "#nav > div > div.jsx-46a4f6ec6f7b253d.flex.flex-shrink-0.justify-center.items-center > div:nth-child(1)",
 		"text": ["Click here, and you'll be taken to a random article.","Feeling lucky?","Random article!"]
 	},
+	{
+		"selector": "#nav > div > div.jsx-46a4f6ec6f7b253d.flex.flex-shrink-0.justify-center.items-center > div.jsx-46a4f6ec6f7b253d.hidden.md\:block",
+		"text": ["Looking for dark or light theme?","Wanna change theme color?","Click here to change theme!"]
+	},
+	{
+		"selector": "#logo-text",
+		"text": ["Hey there, wanna go to the homepage?","This way to home sweet home!","Let's bounce back to the homepage!"]
+	},
+	{
+		"selector": "#today-card-info > div.\'.flex.items-center.px-3.h-10.justify-center.bg-\[\#425aef\].hover\:bg-\[\#4259efcb\].transition-colors.duration-100.rounded-3xl",
+		"text": ["Wanna see more awesome recommendations?","Just give a tap to check out our top picks! ","Trust me, you won't wanna miss this! Ready?"]
+	},
+	{
+		"selector": "#container > div.\32 xl\:grid.\32 xl\:grid-cols-2.grid-cols-1.gap-5 > article:nth-child(1)",
+		"text": ["Ready to dive deeper into this article?","Click right here to soak up all the juicy details!","Don't wait, check it out now!"]
+	},
+	{
+		"selector": "#sideRight > div.bg-\[\#4f65f0\].dark\:bg-yellow-600.text-white.flex.flex-col.w-72.overflow-hidden.relative.card.border.dark\:border-gray-700.rounded-xl.lg\:p-4.p-4 > section > div:nth-child(4) > div > div:nth-child(1)",
+		"text": ["Hey there! Want to get to know us better?","Give that button a big press to uncover all the awesome stuff about us!","Don't miss out, check it out now!"]
+	},
+	{
+		"selector": "#sideRight > div.bg-\[\#4f65f0\].dark\:bg-yellow-600.text-white.flex.flex-col.w-72.overflow-hidden.relative.card.border.dark\:border-gray-700.rounded-xl.lg\:p-4.p-4 > section > div:nth-child(4) > div > div.bg-indigo-400.p-2.rounded-full.w-10.items-center.flex.justify-center.transition-colors.duration-200.dark\:bg-yellow-500.dark\:hover\:bg-black.hover\:bg-white",
+		"text": ["Ready to join the coolest community around?","Click right here to hop on board our Discord server!","Come on, join us now!"]
+	},
 
 	
 	{
